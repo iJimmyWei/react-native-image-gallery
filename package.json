@@ -21,12 +21,12 @@
     "react-native-gesture-responder": "0.1.1",
     "react-native-scroller": "0.0.6",
     "react-mixin": "^3.0.5",
-    "react-timer-mixin": "^0.13.3"
+    "react-timer-mixin": "^0.13.3",
+    "react-native-fast-image": "7.0.2"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*",
-    "react-native-fast-image": "*"
+    "react-native": "*"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
