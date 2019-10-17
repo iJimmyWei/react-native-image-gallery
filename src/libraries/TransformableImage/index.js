@@ -143,7 +143,7 @@ export default class TransformableImage extends PureComponent {
 
     render () {
         const { imageDimensions, viewWidth, viewHeight, error, keyAccumulator, imageLoaded } = this.state;
-        const { style, image, imageComponent, resizeMode, enableTransform, enableScale, enableTranslate, onTransformGestureReleased, onViewTransformed } = this.props;
+        const { style, image, imageComponent, resizeMode, enableTransform, enableScale, enableTranslate, overlayView, onTransformGestureReleased, onViewTransformed } = this.props;
 
         let maxScale = 1;
         let contentAspectRatio;
@@ -189,7 +189,18 @@ export default class TransformableImage extends PureComponent {
               contentAspectRatio={contentAspectRatio}
               onLayout={this.onLayout}
               style={style}>
-                { error ? this.renderError() : content }
+                { error ? this.renderError() : 
+                    image.type === "video" && !!(overlayView)
+                        ? <View>
+                                {content}
+                                <View style={{width: viewWidth, height: viewHeight, position: "absolute"}}>
+                                    <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                                        {overlayView}
+                                    </View>
+                                </View>
+                            </View>
+                        : content
+                }
             </ViewTransformer>
         );
     }
