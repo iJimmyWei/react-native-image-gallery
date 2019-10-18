@@ -177,18 +177,18 @@ export default class TransformableImage extends PureComponent {
 
         return (
             <ViewTransformer
-              ref={'viewTransformer'}
-              key={'viewTransformer#' + keyAccumulator} // when image source changes, we should use a different node to avoid reusing previous transform state
-              enableTransform={enableTransform && imageLoaded} // disable transform until image is loaded
-              enableScale={enableScale}
-              enableTranslate={enableTranslate}
-              enableResistance={true}
-              onTransformGestureReleased={onTransformGestureReleased}
-              onViewTransformed={onViewTransformed}
-              maxScale={maxScale}
-              contentAspectRatio={contentAspectRatio}
-              onLayout={this.onLayout}
-              style={style}>
+                ref={'viewTransformer'}
+                key={'viewTransformer#' + keyAccumulator} // when image source changes, we should use a different node to avoid reusing previous transform state
+                enableTransform={image.type !== "video" && enableTransform && imageLoaded} // disable transform until image is loaded
+                enableScale={image.type !== "video" && enableScale}
+                enableTranslate={image.type !== "video" && enableTranslate}
+                enableResistance={true}
+                onTransformGestureReleased={image.type !== "video" && onTransformGestureReleased}
+                onViewTransformed={image.type !== "video" && onViewTransformed}
+                maxScale={maxScale}
+                contentAspectRatio={contentAspectRatio}
+                onLayout={this.onLayout}
+                style={style}>
                 { error ? this.renderError() : 
                     image.type === "video" && !!(overlayView)
                         ? <View>
