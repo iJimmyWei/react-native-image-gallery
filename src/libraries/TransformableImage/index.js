@@ -183,8 +183,8 @@ export default class TransformableImage extends PureComponent {
                 enableScale={image.type !== "video" && enableScale}
                 enableTranslate={image.type !== "video" && enableTranslate}
                 enableResistance={true}
-                onTransformGestureReleased={image.type !== "video" && onTransformGestureReleased}
-                onViewTransformed={image.type !== "video" && onViewTransformed}
+                onTransformGestureReleased={onTransformGestureReleased}
+                onViewTransformed={onViewTransformed}
                 maxScale={maxScale}
                 contentAspectRatio={contentAspectRatio}
                 onLayout={this.onLayout}
